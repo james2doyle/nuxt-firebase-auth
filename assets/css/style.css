@@ -1,0 +1,35 @@
+[v-cloak] > * {
+  display: none;
+}
+
+[v-cloak]::before {
+  content: "loading…";
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+table th {
+  text-align: left;
+  padding: 0.5em 0;
+}
+
+table th[align="left"] {
+  text-align: left;
+}
+
+table th[align="center"], table th[align="middle"] {
+  text-align: center;
+}
+
+table th[align="right"] {
+  text-align: right;
+}
+
+table td {
+  padding: 0.25em 0;
+}
