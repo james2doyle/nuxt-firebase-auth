@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import SignupForm from '~/components/SignupForm.vue'
+import SignupForm from '~/components/account/SignupForm.vue'
 import { mapState } from 'vuex'
 
 export default {

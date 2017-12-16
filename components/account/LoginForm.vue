@@ -27,7 +27,6 @@
 
       <div class="form-actions">
         <button type="submit" class="btn btn-primary">Log In</button>
-        <button type="button" class="btn">Cancel</button>
       </div>
     </form>
   </div>
