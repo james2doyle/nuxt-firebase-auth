@@ -34,7 +34,12 @@ module.exports = {
   router: {
     // middleware: 'check-auth'
   },
-  plugins: ['~/plugins/auth'],
+  plugins: [
+    {
+      src: '~/plugins/auth',
+      ssr: false
+    }
+  ],
   /*
   ** Build configuration
   */

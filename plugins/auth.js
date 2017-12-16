@@ -9,7 +9,7 @@ export default function ({
     firebase.initializeApp(firebaseConfig)
   }
 
-  firebase.auth().onAuthStateChanged((user) => {
+  return firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       store.commit('setUser', user)
     }
