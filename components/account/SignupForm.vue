@@ -4,7 +4,7 @@
       <div class="form-group">
         <label class="label">Email</label>
         <div class="control">
-          <input class="form-control" v-bind:class="{ 'is-danger': invalidEmail }" type="email" placeholder="Account Email" value="hello@" v-model="email">
+          <input class="form-control" v-bind:class="{ 'is-danger': invalidEmail }" type="email" placeholder="New Account Email" v-model="email">
         </div>
         <p class="help is-danger" v-if="invalidEmail">This email is invalid</p>
       </div>
@@ -12,7 +12,7 @@
       <div class="form-group">
         <label class="label">Password</label>
         <div class="control">
-          <input class="form-control" v-bind:class="{ 'is-danger': invalidPassword }" type="password" placeholder="Password" v-model="password">
+          <input class="form-control" v-bind:class="{ 'is-danger': invalidPassword }" type="password" placeholder="New Account Password" v-model="password">
         </div>
         <p class="help is-danger" v-if="invalidPassword">This password is invalid</p>
       </div>
