@@ -49,6 +49,8 @@ module.exports = {
       'firebase-auth',
       'vuexfire'
     ],
+    // put CSS in files instead of JS bundles
+    extractCSS: true,
     /*
     ** Run ESLint on save
     */
