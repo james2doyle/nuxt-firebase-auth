@@ -7,7 +7,7 @@
 Create a `firebase.js` file in the root of the project. It will look something like this:
 
 ```js
-export default {
+module.exports = {
   'apiKey': 'info-from-firebase-web-instructions',
   'authDomain': 'info-from-firebase-web-instructions',
   'databaseURL': 'info-from-firebase-web-instructions',
@@ -15,7 +15,6 @@ export default {
   'storageBucket': 'info-from-firebase-web-instructions',
   'messagingSenderId': 'info-from-firebase-web-instructions'
 }
-
 ```
 
 ## Build Setup
