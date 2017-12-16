@@ -2,6 +2,10 @@
 
 > An example of using Nuxt with Firebase to auth users without a server
 
+The goal of this project is to make it really easy to generate an application that has Firebase (authentication + user account management) setup out-of-the-box.
+
+_My personal goal with the project is to allow me to create some simple PAAS apps without having to setup auth + Firebase every time._
+
 ## Firebase Setup
 
 Create a `firebase.js` file in the root of the project. It will look something like this:
