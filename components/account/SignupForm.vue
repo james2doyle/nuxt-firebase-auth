@@ -19,7 +19,7 @@
 
       <div class="form-checkbox">
         <label>
-          <input type="checkbox" checked="checked">
+          <input type="checkbox" name="terms">
           <span>I accept the terms and conditions</span>
         </label>
       </div>
