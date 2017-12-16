@@ -12,3 +12,6 @@ dist
 
 # dont show the firebase file
 firebase.js
+
+# hide the compiled service worker
+sw.*

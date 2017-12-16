@@ -13,9 +13,10 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
-    "nuxt": "^1.0.0-rc11",
+    "@nuxtjs/pwa": "^2.0.4",
     "firebase": "^4.6.0",
     "firebase-auth": "^0.1.2",
+    "nuxt": "^1.0.0-rc11",
     "vuexfire": "^2.3.0"
   },
   "devDependencies": {

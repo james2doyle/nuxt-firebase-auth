@@ -25,6 +25,12 @@ module.exports = {
     '~/assets/css/style.css'
   ],
   /*
+   ** Site Modules
+   */
+  modules: [
+    ['@nuxtjs/pwa', { icon: false }]
+  ],
+  /*
   ** Customize the progress bar color
   */
   loading: { color: '#24292e' },
