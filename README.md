@@ -21,6 +21,23 @@ module.exports = {
 }
 ```
 
+#### Rules
+
+In order to keep other users from writing to paths they don't own, we need to add some rules to the database:
+
+```json
+{
+  "rules": {
+    "accounts": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    }
+  }
+}
+```
+
 ## Build Setup
 
 ``` bash
