@@ -1,20 +1,29 @@
 <template>
   <div>
-    <div class="columns" v-if="user" v-cloak>
+    <div class="columns" v-if="account" v-cloak>
       <div class="one-half column centered">
         <div class="blankslate blankslate-clean-background">
-          <h3 v-text="user.email"></h3>
+          <div class="profile-image centered">
+            <img v-bind:src="account.image" width="100" height="100" />
+          </div>
+          <h3 v-text="account.displayName"></h3>
           <p>View and manage your account</p>
         </div>
       </div>
     </div>
     <div class="columns">
-      <div class="one-half column centered">
-        <div v-if="user" v-cloak>
-          <pre v-text="`${JSON.stringify(user, null, 2)}`"></pre>
+      <div class="one-half column centered" v-if="editing" v-cloak>
+        <p>Edit Your Profile</p>
+        <EditAccountForm />
+      </div>
+      <div class="one-half column centered" v-else>
+        <div v-if="account" v-cloak>
+          <p>Information pulled from the firebase <code>/account</code> dataset</p>
+          <pre v-text="`${JSON.stringify(account, null, 2)}`"></pre>
         </div>
       </div>
       <div class="mt-4 one-half column centered">
+        <button type="button" class="btn btn-primary mr-2" v-on:click="toggleEditForm">Edit</button>
         <button type="button" class="btn btn-danger" v-on:click="signOut">Sign Out</button>
       </div>
     </div>
@@ -23,13 +32,26 @@
 
 <script>
 import { mapState } from 'vuex'
+import EditAccountForm from '~/components/account/EditAccountForm.vue'
 
 export default {
   middleware: 'authenticated',
+  components: {
+    EditAccountForm
+  },
   computed: mapState([
-    'user'
+    'user',
+    'account'
   ]),
+  data () {
+    return {
+      editing: false
+    }
+  },
   methods: {
+    toggleEditForm () {
+      this.editing = !this.editing
+    },
     signOut () {
       this.$store.dispatch('userLogout')
         .then(() => {
@@ -42,3 +64,11 @@ export default {
   }
 }
 </script>
+
+<style lang="css" scoped>
+  .profile-image img {
+    border-radius: 100px;
+    overflow: hidden;
+    border: 2px solid #b2b1b0;
+  }
+</style>
