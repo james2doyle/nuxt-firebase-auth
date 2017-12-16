@@ -6,10 +6,6 @@ The goal of this project is to make it really easy to generate an application th
 
 _My personal goal with the project is to allow me to create some simple PAAS apps without having to setup auth + Firebase every time._
 
-### Screenshot
-
-![nuxt firebase auth preview image](/preview.jpg)
-
 ## Firebase Setup
 
 Create a `firebase.js` file in the root of the project. It will look something like this:
@@ -60,3 +56,7 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
+
+### Screenshot
+
+![nuxt firebase auth preview image](/preview.jpg)
