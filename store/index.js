@@ -37,7 +37,8 @@ const createStore = () => {
       userLogin ({ state }, account) {
         return firebase.auth()
           .signInWithEmailAndPassword(account.email, account.password)
-          .then(() => {
+          .then((user) => {
+            return this.dispatch('setUser', user)
           })
       },
       userLogout ({ state }) {
