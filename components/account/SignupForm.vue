@@ -2,7 +2,7 @@
   <div>
     <form v-on:submit.prevent="signup">
       <div class="form-group">
-        <label class="label">Email</label>
+        <label>Email</label>
         <div class="control">
           <input class="form-control" v-bind:class="{ 'is-danger': invalidEmail }" type="email" placeholder="New Account Email" v-model="email">
         </div>
@@ -10,7 +10,7 @@
       </div>
 
       <div class="form-group">
-        <label class="label">Password</label>
+        <label>Password</label>
         <div class="control">
           <input class="form-control" v-bind:class="{ 'is-danger': invalidPassword }" type="password" placeholder="New Account Password" v-model="password">
         </div>
