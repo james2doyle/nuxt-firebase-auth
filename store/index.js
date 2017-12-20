@@ -2,6 +2,14 @@ import Vuex from 'vuex'
 import firebase from 'firebase'
 import { firebaseMutations, firebaseAction } from 'vuexfire'
 
+function createNewAccount (user) {
+  return firebase.database().ref(`accounts/${user.uid}`).set({
+    displayName: user.displayName || user.email.split('@')[0], // use part of the email as a username
+    email: user.email,
+    image: user.newImage || '/images/default-profile.png' // supply a default profile image for all users
+  })
+}
+
 const createStore = () => {
   return new Vuex.Store({
     state: {
@@ -26,12 +34,42 @@ const createStore = () => {
         return firebase.auth()
           .createUserWithEmailAndPassword(account.email, account.password)
           .then((user) => {
-            console.log(user)
-            return firebase.database().ref(`accounts/${user.uid}`).set({
-              displayName: user.displayName || user.email.split('@')[0], // use part of the email as a username
-              email: user.email,
-              image: '/images/default-profile.png' // supply a default profile image for all users
+            return createNewAccount(user)
+          })
+      },
+      userGoogleLogin ({ commit }) {
+        firebase.auth().useDeviceLanguage()
+        const provider = new firebase.auth.GoogleAuthProvider()
+        provider.addScope('https://www.googleapis.com/auth/plus.login')
+        provider.setCustomParameters({
+          'login_hint': 'user@example.com'
+        })
+        return firebase.auth()
+          .signInWithPopup(provider)
+          .then((result) => {
+            createNewAccount({
+              newImage: result.additionalUserInfo.profile.picture, // just use their existing user image to start
+              ...result.user
             })
+            return commit('setUser', result.user)
+          }).catch((error) => {
+            console.log(error)
+          })
+      },
+      userGithubLogin ({ commit }) {
+        firebase.auth().useDeviceLanguage()
+        const provider = new firebase.auth.GithubAuthProvider()
+        provider.addScope('user:email')
+        return firebase.auth()
+          .signInWithPopup(provider)
+          .then((result) => {
+            createNewAccount({
+              newImage: result.additionalUserInfo.profile.avatar_url, // just use their existing user image to start
+              ...result.user
+            })
+            return commit('setUser', result.user)
+          }).catch((error) => {
+            console.log(error)
           })
       },
       userLogin ({ state }, account) {
@@ -45,7 +83,6 @@ const createStore = () => {
         return firebase.auth()
           .signOut()
           .then(() => {
-            console.log('Signed Out')
             this.dispatch('resetUser')
           })
       },

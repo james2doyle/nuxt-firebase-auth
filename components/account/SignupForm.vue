@@ -35,13 +35,28 @@
       <div class="form-actions">
         <button type="submit" class="btn btn-primary">Sign Up</button>
       </div>
+
+      <div class="form-actions mt-2">
+        <GoogleButton label="Sign Up With Google" />
+      </div>
+
+      <div class="form-actions mt-2">
+        <GithubButton label="Sign Up With Github" />
+      </div>
     </form>
   </div>
 </template>
 
 <script>
+import GoogleButton from '~/components/account/3rd-party/GoogleButton.vue'
+import GithubButton from '~/components/account/3rd-party/GithubButton.vue'
+
 export default {
   name: 'SignupForm',
+  components: {
+    GoogleButton,
+    GithubButton
+  },
   data () {
     return {
       email: '',

@@ -28,13 +28,28 @@
       <div class="form-actions">
         <button type="submit" class="btn btn-primary">Log In</button>
       </div>
+
+      <div class="form-actions mt-2">
+        <GoogleButton label="Sign In With Google" />
+      </div>
+
+      <div class="form-actions mt-2">
+        <GithubButton label="Sign In With Github" />
+      </div>
     </form>
   </div>
 </template>
 
 <script>
+import GoogleButton from '~/components/account/3rd-party/GoogleButton.vue'
+import GithubButton from '~/components/account/3rd-party/GithubButton.vue'
+
 export default {
   name: 'LoginForm',
+  components: {
+    GoogleButton,
+    GithubButton
+  },
   data () {
     return {
       email: '',
