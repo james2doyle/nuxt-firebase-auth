@@ -61,6 +61,6 @@ $ npm run generate
 
 For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
 
-### Screenshot
+### Demo GIF
 
-![nuxt firebase auth preview image](/preview.jpg)
+![nuxt firebase auth preview image](/preview.gif)
