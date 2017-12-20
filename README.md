@@ -38,6 +38,10 @@ In order to keep other users from writing to paths they don't own, we need to ad
 }
 ```
 
+#### Social Logins
+
+I have setup social login for Google and Github. You will need to login to your Firebase console and enable those signin methods. Google will work out-of-the-box with any Firebase app. But you will need to create a new oAuth application if you would like to use Github signin.
+
 ## Build Setup
 
 ``` bash
