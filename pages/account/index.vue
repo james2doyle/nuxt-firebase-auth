@@ -74,4 +74,7 @@ export default {
     overflow: hidden;
     border: 2px solid #b2b1b0;
   }
+  pre {
+    white-space: pre-wrap;
+  }
 </style>
