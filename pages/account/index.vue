@@ -23,7 +23,10 @@
         </div>
       </div>
       <div class="mt-4 one-half column centered">
-        <button type="button" class="btn btn-primary mr-2" v-on:click="toggleEditForm">Edit</button>
+        <button type="button" class="btn btn-primary mr-2" v-on:click="toggleEditForm">
+          <span v-if="editing">Done</span>
+          <span v-else>Edit</span>
+        </button>
         <button type="button" class="btn btn-danger" v-on:click="signOut">Sign Out</button>
       </div>
     </div>
