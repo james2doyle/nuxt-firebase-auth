@@ -4,7 +4,9 @@
       <div class="one-half column centered">
         <div class="blankslate blankslate-clean-background">
           <div class="profile-image centered">
-            <img v-bind:src="account.image" width="100" height="100" />
+            <a v-bind:href="account.image" class="d-inline-block" target="_blank" title="Click To View">
+              <img v-bind:src="account.image" width="100" height="100" v-bind:alt="imageAlt" />
+            </a>
           </div>
           <h3 v-text="account.displayName"></h3>
           <p>View and manage your account</p>
@@ -42,10 +44,15 @@ export default {
   components: {
     EditAccountForm
   },
-  computed: mapState([
-    'user',
-    'account'
-  ]),
+  computed: {
+    ...mapState([
+      'user',
+      'account'
+    ]),
+    imageAlt () {
+      return `Profile image for ${this.account.displayName}`
+    }
+  },
   data () {
     return {
       editing: false
