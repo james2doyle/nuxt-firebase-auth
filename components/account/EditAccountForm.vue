@@ -1,17 +1,17 @@
 <template>
   <form>
-    <div class="form-group">
-      <label class="label">Display Name</label>
-      <div class="control">
+    <dl class="form-group">
+      <dt><label class="text-inherit">Display Name</label></dt>
+      <dd class="control">
         <input class="form-control" type="email" placeholder="Display Name" v-model="newData.displayName" v-on:input="updateField('displayName')">
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="label">Profile Image</label>
-      <div class="control">
+      </dd>
+    </dl>
+    <dl class="form-group">
+      <dt><label class="text-inherit">Profile Image</label></dt>
+      <dd class="control">
         <input class="form-control" type="file" accept="image/*" placeholder="Profile Image" v-on:change="updateProfileImage" ref="fileInput">
-      </div>
-    </div>
+      </dd>
+    </dl>
     <div class="form-group">
       <div class="flash" v-if="formSuccess.length > 0" v-text="formSuccess"></div>
       <div class="flash flash-error" v-if="formError.length > 0" v-text="formError"></div>
@@ -44,8 +44,11 @@ export default {
     this.newData.image = this.account.image
   },
   methods: {
+    resetFormMessages () {
+      this.formSuccess = this.formError = ''
+    },
     updateField (key) {
-      this.formSuccess = ''
+      this.resetFormMessages()
       clearTimeout(this.debounceTimer)
       this.debounceTimer = setTimeout(() => {
         console.info('update field', key)
@@ -53,9 +56,14 @@ export default {
           .then(() => {
             this.formSuccess = 'Successfully updated your account details'
           })
+          .catch((err) => {
+            this.formError = 'Error saving the profile changes'
+            console.error(err)
+          })
       }, 500)
     },
     updateProfileImage () {
+      this.resetFormMessages()
       const file = this.$refs.fileInput.files[0]
       const ref = firebase.storage().ref(`accounts/profile/${this.user.uid}`)
       ref.put(file).then((snapshot) => {
@@ -65,6 +73,10 @@ export default {
           this.formSuccess = 'Successfully uploaded a new profile image'
           // reset the form input
           this.$refs.fileInput.value = null
+        })
+        .catch((err) => {
+          this.formError = 'Error uploading new profile image'
+          console.error(err)
         })
     }
   }
