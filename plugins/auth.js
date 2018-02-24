@@ -1,6 +1,10 @@
 import firebaseConfig from '~/firebase'
 import firebase from 'firebase'
 
+if (!firebaseConfig) {
+  throw new Error('missing firebase.json config.')
+}
+
 export default function ({
   store,
   redirect
