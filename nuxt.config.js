@@ -50,11 +50,6 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    vendor: [
-      'firebase',
-      'firebase-auth',
-      'vuexfire'
-    ],
     // put CSS in files instead of JS bundles
     extractCSS: true,
     /*

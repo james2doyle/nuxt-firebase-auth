@@ -13,7 +13,6 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
-    "@grpc/grpc-js": "^0.3.2",
     "@nuxtjs/pwa": "^2.0.5",
     "firebase": "^5.6.0",
     "firebase-auth": "^0.1.2",
@@ -21,14 +20,14 @@
     "vuexfire": "^2.3.0"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.2",
-    "eslint": "^4.18.1",
-    "eslint-config-standard": "^11.0.0",
-    "eslint-loader": "^1.9.0",
-    "eslint-plugin-html": "^4.0.2",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.9.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-html": "^5.0.0",
     "eslint-plugin-import": "^2.9.0",
-    "eslint-plugin-node": "^6.0.1",
-    "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^3.0.1"
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0"
   }
 }
