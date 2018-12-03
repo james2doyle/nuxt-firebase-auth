@@ -33,7 +33,7 @@ const createStore = () => {
       userCreate ({ state }, account) {
         return firebase.auth()
           .createUserWithEmailAndPassword(account.email, account.password)
-          .then((user) => {
+          .then(({ user }) => {
             return createNewAccount(user)
           })
       },

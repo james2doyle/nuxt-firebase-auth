@@ -1,5 +1,5 @@
 import firebaseConfig from '~/firebase'
-import firebase from 'firebase'
+import firebase from 'firebase/app'
 
 if (!firebaseConfig) {
   throw new Error('missing firebase.json config.')

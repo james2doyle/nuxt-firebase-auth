@@ -20,8 +20,8 @@
 </template>
 
 <script>
+import firebase from 'firebase/app'
 import { mapState } from 'vuex'
-import firebase from 'firebase'
 
 export default {
   computed: mapState([
@@ -65,10 +65,14 @@ export default {
     updateProfileImage () {
       this.resetFormMessages()
       const file = this.$refs.fileInput.files[0]
-      const ref = firebase.storage().ref(`accounts/profile/${this.user.uid}`)
-      ref.put(file).then((snapshot) => {
-        return this.$store.dispatch('userUpdateImage', snapshot.downloadURL)
-      })
+      const ref = firebase.storage().ref().child(`accounts/profile/${this.user.uid}`)
+      ref.put(file)
+        .then((snapshot) => {
+          return snapshot.ref.getDownloadURL()
+        })
+        .then((downloadUrl) => {
+          return this.$store.dispatch('userUpdateImage', downloadUrl)
+        })
         .then(() => {
           this.formSuccess = 'Successfully uploaded a new profile image'
           // reset the form input
